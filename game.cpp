@@ -1,4 +1,4 @@
-﻿#include "game.h"
+#include "game.h"
 #include "../math/math.h"
 #include "../window/window.hpp"
 #include "game.h"
@@ -122,7 +122,7 @@ namespace FiveM {
 		uintptr_t boneList = 0;
 		uintptr_t boneMatrix = 0x60;
 		uintptr_t playerInfo = 0;
-		uintptr_t playerHealth = 0x280;
+		uintptr_t playerHealth = 0x190;
 		uintptr_t playerPosition = 0x90;
 		uintptr_t base = 0;
 	}
@@ -185,6 +185,25 @@ void FiveM::ESP::RunESP()
 	float playerHeight = 1.50;
 
 	for (int i = 0; i < 200; i++) {
+
+		uintptr_t ped = mem.Read<uintptr_t>(pedList + i * 0x10);
+		if (!ped) continue;
+
+		if (ped == offset::localPlayer) continue;
+
+		Vec3 origin = mem.Read<Vec3>(ped + offset::playerPosition);
+		Vec3 localPos = mem.Read<Vec3>(offset::localPlayer + offset::playerPosition);
+
+		float distance = std::sqrt(
+			(origin.x - localPos.x) * (origin.x - localPos.x) +
+			(origin.y - localPos.y) * (origin.y - localPos.y) +
+			(origin.z - localPos.z) * (origin.z - localPos.z)
+		);
+		if (distance < 1.0f) continue;
+
+		// ادامه کد ESP رسم باکس و نوار سلامت...
+
+
 
 		uintptr_t ped = mem.Read<uintptr_t>(pedList + i * 0x10);
 		if (!ped) continue;
