@@ -120,7 +120,7 @@ class MinerGUI(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Cactus Mine Bot")
+        self.setWindowTitle("Mine Bot")
         self.setMinimumSize(700, 500)
 
         layout = QVBoxLayout()
@@ -132,10 +132,10 @@ class MinerGUI(QWidget):
         self.passport_input.setPlaceholderText("Fruit Passport")
 
         self.power_input = QLineEdit()
-        self.power_input.setPlaceholderText("Mining Power (int)")
+        self.power_input.setPlaceholderText("Mining Power ")
 
         self.capacity_input = QLineEdit()
-        self.capacity_input.setPlaceholderText("Mining Capacity (int)")
+        self.capacity_input.setPlaceholderText("Mining Capacity ")
 
         self.deposit_checkbox = QCheckBox("Deposit money to bank")
 
