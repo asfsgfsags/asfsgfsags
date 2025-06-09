@@ -1,3 +1,27 @@
+import subprocess
+import sys
+
+required_packages = ["PyQt6", "requests", "colorama"]
+
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"Package '{package}' not found. Installing...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# بقیه کد از اینجا شروع میشه
+import threading
+import queue
+import time
+from PyQt6.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton,
+    QTextEdit, QHBoxLayout, QCheckBox, QMessageBox
+)
+from PyQt6.QtCore import Qt, QTimer
+
+import requests
+from colorama import Fore
 import sys
 import threading
 import queue
